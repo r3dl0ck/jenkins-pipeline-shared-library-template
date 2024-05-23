@@ -1,13 +1,17 @@
 #!groovy
 
-def call(String repoUrl, String branch) {
+def call(body) {
+    def config = [:]
+    body.resolveStrategy = Closure.DELEGATE_FIRST
+    body.delegate = config
+    body()
     
     pipeline {
         agent any
         stages {
             stage('Checkout') {
                 steps {
-                    sh "echo ${repoUrl} ${branch}"
+                    sh "echo ${config.repoUrl} ${config.branch}"
                 }
             }
             stage('Build') {
