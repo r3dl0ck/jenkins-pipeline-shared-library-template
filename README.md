@@ -16,3 +16,4 @@ continuousDeliveryPipeline {
 }
 ```
 
+3. Uruchom kompilacja nowego zadania.
